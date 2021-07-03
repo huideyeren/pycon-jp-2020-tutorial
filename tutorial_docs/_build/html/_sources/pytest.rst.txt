@@ -15,7 +15,7 @@ pytestはすでにローカル開発環境を用意した段階でインスト�
 
 ::
 
-    pip install -U pytest
+    (.venv)> pip install -U pytest
 
 pytestを使ったテストケースは ``pytest`` コマンドでテストの実行と結果を確認できます。
 
@@ -37,7 +37,13 @@ pytestを使ったテストケースは ``pytest`` コマンドでテストの�
 
 ::
 
-  PS C:\Users\hiroshi\Documents\pycon-jp-2020-tutorial\tutorial_docs> pytest .\step\pytest-1\test_hello_pytest.py
+  # Windows 10の場合
+  (.venv)tutorial_docs> pytest .\step\pytest-1\test_hello_pytest.py
+
+  # macOSの場合
+  (.venv)tutorial_docs& pytest ./step/pytest-1/test_hello_pytest.py
+
+  # テスト結果はWindows 10の例
   ============================================================= test session starts =============================================================
   platform win32 -- Python 3.7.3, pytest-6.0.1, py-1.9.0, pluggy-0.13.1
   rootdir: C:\Users\hiroshi\Documents\pycon-jp-2020-tutorial\tutorial_docs
@@ -66,7 +72,14 @@ pytestを使ったテストケースは ``pytest`` コマンドでテストの�
 
 ::
 
-  PS C:\Users\hiroshi\Documents\pycon-jp-2020-tutorial\tutorial_docs> pytest .\step\pytest-1\test_hello_pytest_2.py
+
+  # Windows 10の場合
+  (.venv)tutorial_docs> pytest .\step\pytest-1\test_hello_pytest_2.py
+
+  # macOSの場合
+  (.venv)tutorial_docs& pytest ./step/pytest-1/test_hello_pytest_2.py
+
+  # テスト結果はWindows 10の例
   ============================================================= test session starts =============================================================
   platform win32 -- Python 3.7.3, pytest-6.0.1, py-1.9.0, pluggy-0.13.1
   rootdir: C:\Users\hiroshi\Documents\pycon-jp-2020-tutorial\tutorial_docs
@@ -99,7 +112,13 @@ pytestを使ったテストケースは ``pytest`` コマンドでテストの�
 
 ::
 
-  PS C:\Users\hiroshi\Documents\pycon-jp-2020-tutorial\tutorial_docs> pytest .\step\pytest-1\test_hello_pytest_3.py
+  # Windows 10の場合
+  (.venv)tutorial_docs> pytest .\step\pytest-1\test_hello_pytest_3.py
+
+  # macOSの場合
+  (.venv)tutorial_docs& pytest ./step/pytest-1/test_hello_pytest_3.py
+
+  # テスト結果はWindows 10の例
   ============================================================= test session starts =============================================================
   platform win32 -- Python 3.7.3, pytest-6.0.1, py-1.9.0, pluggy-0.13.1
   rootdir: C:\Users\hiroshi\Documents\pycon-jp-2020-tutorial\tutorial_docs
@@ -113,7 +132,13 @@ pytestは ``-v`` オプションでテスト関数やクラスの一覧も表示
 
 ::
 
-  PS C:\Users\hiroshi\Documents\pycon-jp-2020-tutorial\tutorial_docs> pytest .\step\pytest-1\test_hello_pytest_3.py -v
+  # Windows 10の場合
+  (.venv)tutorial_docs> pytest -v .\step\pytest-1\test_hello_pytest_3.py
+
+  # macOSの場合
+  (.venv)tutorial_docs& pytest -v ./step/pytest-1/test_hello_pytest_3.py
+
+  # テスト結果はWindows 10の例
   ============================================================= test session starts =============================================================
   platform win32 -- Python 3.7.3, pytest-6.0.1, py-1.9.0, pluggy-0.13.1 -- c:\users\hiroshi\documents\pycon-jp-2020-tutorial\.venv\scripts\python.exe
   cachedir: .pytest_cache
@@ -124,6 +149,27 @@ pytestは ``-v`` オプションでテスト関数やクラスの一覧も表示
 
   ============================================================== 1 passed in 0.09s ==============================================================
 
+.. note::
+  pytestコマンドのオプションは様々な物があります。 例えば `-rA` は すべてのテスト結果のショートサマリーが見れます。テスト結果とテストの失敗やエラー情報がテストごとに1～2行で表されます。
+
+  ::
+
+    (.venv) \step\pytest-1> pytest -ra
+
+    # テスト結果を割愛して最後のショートサマリの箇所を引用
+
+    ================================================================= short test summary info ==================================================================
+    PASSED test_fixture_load_json.py::test_check_val1
+    PASSED test_fixture_load_json.py::test_check_val2
+    PASSED test_hello_pytest_3.py::test_pytest
+    PASSED test_monkeypatch_function.py::test_getssh
+    PASSED test_parametrize.py::test_eval[3+5-8]
+    PASSED test_parametrize.py::test_eval[2+4-6]
+    FAILED test_hello_pytest_1.py::test_pytest - assert 1 == 2
+    FAILED test_hello_pytest_2.py::test_pytest - ZeroDivisionError: division by zero
+    FAILED test_parametrize.py::test_eval[6*9-42] - AssertionError: assert 54 == 42
+
+  `Usage and Invocations — pytest documentation <https://docs.pytest.org/en/stable/usage.html#detailed-summary-report>`_
 
 pytestの機能
 ===================================
@@ -168,6 +214,47 @@ monkeypatchはpythonのUnittest.mockのような機能です。モックとな�
 .. literalinclude:: ./step/pytest-1/test_monkeypatch_function.py
 
 
+pytestコマンドは自動的にテストファイルを探す
+======================================================================
+
+またpytestは自動的にテストとして実行可能なファイルを探します。プロジェクトのディレクトリ上でpytestコマンドを実行させるだけで簡単にテストの実行が出来ます。
+
+``./tutorial_docs/step/pytest-1`` というディレクトリに上記までに扱ったテストファイルがありますが、ここではディレクトリにカレントディレクトリを移動させてpytestの実行をしてみましょう。
+
+::
+
+
+  # Windows 10の場合
+  (.venv) tutorial_docs> cd .\tutorial_docs\step\pytest-1
+  (.venv) pytest-1> pytest
+
+  # macOSの場合
+  (.venv) tutorial_docs$ cd ./tutorial_docs/step/pytest-1
+  (.venv) pytest-1$ pytest
+
+
+上記までの説明で利用したテストファイルが実行されます。成功、失敗するテストがいくつかあるか確認してみましょう。
+
+確認が終わったら、 cdコマンドでtutorial_docsディレクトリまで移動してください。
+
+::
+
+  # Windows 10の場合
+  (.venv) pytest-1> cd ..\..\..\
+  (.venv) tutorial_docs>
+
+  # macOSの場合
+  (.venv) pytest-1$ cd ../../../
+  (.venv) tutorial_docs$
+
+休憩3🧘‍♂️
+===============
+
+pytestの基本的なコーディングと、便利な機能を紹介しました。情報量も多かったと思うので、このあたりで休憩しましょう。
+
+おやつも良いのですが、一日中座りっぱなしも体に良くないです。立ち上がって背伸びをするなどストレッチをしましょう！🧘‍♂️
+
+
 SlackBotのテストケースを書いてみよう
 ======================================================================
 
@@ -180,7 +267,7 @@ SlackbotはSlackワークスペースとの連携が必要になりますが、�
 -------------
 
 - ``pt_slackbot`` ディレクトリ内に ``tests`` ディレクトリを作成します(作成はVS Codeやターミナル経由でも良いです）
-- ``tests`` ディレクトリに ``__init__.py``　ファイルを作成します
+- ``tests`` ディレクトリに ``__init__.py``　ファイルを作成します。これによりpytestはtestsディレクトリをテストが入っているディレクトリとして認識します
 
 各botのテストケースについて
 ---------------------------------------
@@ -192,3 +279,12 @@ SlackbotはSlackワークスペースとの連携が必要になりますが、�
 この章で使う資料は以下のURL（パス）から参照できます。
 
 `pycon-jp-2020-tutorial/tutorial_docs/step/pytest-2 <https://github.com/py-suruga/pycon-jp-2020-tutorial/tree/master/tutorial_docs/step/pytest-2>`_
+
+休憩4🍪☕
+===============
+
+pytestを使ってbotのテストケースを作成しました。テストを作成することで作成や変更したコードに対しての信頼性を持たせることが出来ます。次は、Sphinxを使いドキュメントを作成します。
+
+この辺で休憩です。そろそろコーヒーかお茶が飲みたい頃ですね。用意しておきましょう☕
+
+.. image:: ./doc-img/oyatu-2.jpg

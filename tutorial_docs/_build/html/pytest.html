@@ -1,38 +1,180 @@
 
-<!DOCTYPE html>
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pytestでテストケースを導入する &#8212; PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント 2020.07.24 ドキュメント</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/translations.js"></script>
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pytestでテストケースを導入する &mdash; PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント 2020.07.24 ドキュメント</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
     <link rel="next" title="Sphinxでドキュメントを書こう" href="sphinx.html" />
-    <link rel="prev" title="Slackbotの作成" href="slackbot.html" />
+    <link rel="prev" title="Slackbotの作成" href="slackbot.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
           
 
-          <div class="body" role="main">
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="prepare.html">チュートリアル開始前の準備</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode.html">VS CodeとLive Shareの設定</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slackbot.html">Slackbotの作成</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pytestでテストケースを導入する</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">pytestコマンドの使い方</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">テストの失敗</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">テストの成功</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">pytestの機能</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parametrize">parametrize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fixture">fixture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#monkeypatch">monkeypatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">pytestコマンドは自動的にテストファイルを探す</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">休憩3🧘‍♂️</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slackbot">SlackBotのテストケースを書いてみよう</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">下準備</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bot">各botのテストケースについて</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">休憩4🍪☕</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.html">Sphinxでドキュメントを書こう</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>pytestでテストケースを導入する</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pytest.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="pytest">
 <h1>pytestでテストケースを導入する<a class="headerlink" href="#pytest" title="このヘッドラインへのパーマリンク">¶</a></h1>
@@ -42,7 +184,7 @@
 <div class="section" id="id1">
 <h2>pytestコマンドの使い方<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>pytestはすでにローカル開発環境を用意した段階でインストールされています。 <code class="docutils literal notranslate"><span class="pre">pytest</span></code> コマンドを実行することで確認できます。もしコマンドが存在しないというエラーがある場合はpipコマンドでインストールしてください</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">pytest</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">pytest</span>
 </pre></div>
 </div>
 <p>pytestを使ったテストケースは <code class="docutils literal notranslate"><span class="pre">pytest</span></code> コマンドでテストの実行と結果を確認できます。</p>
@@ -60,7 +202,13 @@
 <a class="reference external" href="https://docs.python.org/ja/3/reference/simple_stmts.html#assert">https://docs.python.org/ja/3/reference/simple_stmts.html#assert</a></p>
 </div>
 <p>このテストは失敗します。pytestコマンドで実行してみましょう。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PS</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">hiroshi</span>\<span class="n">Documents</span>\<span class="n">pycon</span><span class="o">-</span><span class="n">jp</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="n">tutorial</span>\<span class="n">tutorial_docs</span><span class="o">&gt;</span> <span class="n">pytest</span> <span class="o">.</span>\<span class="n">step</span>\<span class="n">pytest</span><span class="o">-</span><span class="mi">1</span>\<span class="n">test_hello_pytest</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows 10の場合</span>
+<span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span><span class="n">tutorial_docs</span><span class="o">&gt;</span> <span class="n">pytest</span> <span class="o">.</span>\<span class="n">step</span>\<span class="n">pytest</span><span class="o">-</span><span class="mi">1</span>\<span class="n">test_hello_pytest</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># macOSの場合</span>
+<span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span><span class="n">tutorial_docs</span><span class="o">&amp;</span> <span class="n">pytest</span> <span class="o">./</span><span class="n">step</span><span class="o">/</span><span class="n">pytest</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">test_hello_pytest</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># テスト結果はWindows 10の例</span>
 <span class="o">=============================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=============================================================</span>
 <span class="n">platform</span> <span class="n">win32</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">6.0</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.9</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.13</span><span class="o">.</span><span class="mi">1</span>
 <span class="n">rootdir</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">hiroshi</span>\<span class="n">Documents</span>\<span class="n">pycon</span><span class="o">-</span><span class="n">jp</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="n">tutorial</span>\<span class="n">tutorial_docs</span>
@@ -89,7 +237,13 @@
     <span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">test_val</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PS</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">hiroshi</span>\<span class="n">Documents</span>\<span class="n">pycon</span><span class="o">-</span><span class="n">jp</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="n">tutorial</span>\<span class="n">tutorial_docs</span><span class="o">&gt;</span> <span class="n">pytest</span> <span class="o">.</span>\<span class="n">step</span>\<span class="n">pytest</span><span class="o">-</span><span class="mi">1</span>\<span class="n">test_hello_pytest_2</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows 10の場合</span>
+<span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span><span class="n">tutorial_docs</span><span class="o">&gt;</span> <span class="n">pytest</span> <span class="o">.</span>\<span class="n">step</span>\<span class="n">pytest</span><span class="o">-</span><span class="mi">1</span>\<span class="n">test_hello_pytest_2</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># macOSの場合</span>
+<span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span><span class="n">tutorial_docs</span><span class="o">&amp;</span> <span class="n">pytest</span> <span class="o">./</span><span class="n">step</span><span class="o">/</span><span class="n">pytest</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">test_hello_pytest_2</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># テスト結果はWindows 10の例</span>
 <span class="o">=============================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=============================================================</span>
 <span class="n">platform</span> <span class="n">win32</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">6.0</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.9</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.13</span><span class="o">.</span><span class="mi">1</span>
 <span class="n">rootdir</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">hiroshi</span>\<span class="n">Documents</span>\<span class="n">pycon</span><span class="o">-</span><span class="n">jp</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="n">tutorial</span>\<span class="n">tutorial_docs</span>
@@ -120,7 +274,13 @@
 </pre></div>
 </div>
 <p>実行すると成功した様子が確認できます。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PS</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">hiroshi</span>\<span class="n">Documents</span>\<span class="n">pycon</span><span class="o">-</span><span class="n">jp</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="n">tutorial</span>\<span class="n">tutorial_docs</span><span class="o">&gt;</span> <span class="n">pytest</span> <span class="o">.</span>\<span class="n">step</span>\<span class="n">pytest</span><span class="o">-</span><span class="mi">1</span>\<span class="n">test_hello_pytest_3</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows 10の場合</span>
+<span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span><span class="n">tutorial_docs</span><span class="o">&gt;</span> <span class="n">pytest</span> <span class="o">.</span>\<span class="n">step</span>\<span class="n">pytest</span><span class="o">-</span><span class="mi">1</span>\<span class="n">test_hello_pytest_3</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># macOSの場合</span>
+<span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span><span class="n">tutorial_docs</span><span class="o">&amp;</span> <span class="n">pytest</span> <span class="o">./</span><span class="n">step</span><span class="o">/</span><span class="n">pytest</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">test_hello_pytest_3</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># テスト結果はWindows 10の例</span>
 <span class="o">=============================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=============================================================</span>
 <span class="n">platform</span> <span class="n">win32</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">6.0</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.9</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.13</span><span class="o">.</span><span class="mi">1</span>
 <span class="n">rootdir</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">hiroshi</span>\<span class="n">Documents</span>\<span class="n">pycon</span><span class="o">-</span><span class="n">jp</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="n">tutorial</span>\<span class="n">tutorial_docs</span>
@@ -132,7 +292,13 @@
 </pre></div>
 </div>
 <p>pytestは <code class="docutils literal notranslate"><span class="pre">-v</span></code> オプションでテスト関数やクラスの一覧も表示できます。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PS</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">hiroshi</span>\<span class="n">Documents</span>\<span class="n">pycon</span><span class="o">-</span><span class="n">jp</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="n">tutorial</span>\<span class="n">tutorial_docs</span><span class="o">&gt;</span> <span class="n">pytest</span> <span class="o">.</span>\<span class="n">step</span>\<span class="n">pytest</span><span class="o">-</span><span class="mi">1</span>\<span class="n">test_hello_pytest_3</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">v</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows 10の場合</span>
+<span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span><span class="n">tutorial_docs</span><span class="o">&gt;</span> <span class="n">pytest</span> <span class="o">-</span><span class="n">v</span> <span class="o">.</span>\<span class="n">step</span>\<span class="n">pytest</span><span class="o">-</span><span class="mi">1</span>\<span class="n">test_hello_pytest_3</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># macOSの場合</span>
+<span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span><span class="n">tutorial_docs</span><span class="o">&amp;</span> <span class="n">pytest</span> <span class="o">-</span><span class="n">v</span> <span class="o">./</span><span class="n">step</span><span class="o">/</span><span class="n">pytest</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">test_hello_pytest_3</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># テスト結果はWindows 10の例</span>
 <span class="o">=============================================================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">=============================================================</span>
 <span class="n">platform</span> <span class="n">win32</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">6.0</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="o">-</span><span class="mf">1.9</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">0.13</span><span class="o">.</span><span class="mi">1</span> <span class="o">--</span> <span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hiroshi</span>\<span class="n">documents</span>\<span class="n">pycon</span><span class="o">-</span><span class="n">jp</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="n">tutorial</span>\<span class="o">.</span><span class="n">venv</span>\<span class="n">scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span>
 <span class="n">cachedir</span><span class="p">:</span> <span class="o">.</span><span class="n">pytest_cache</span>
@@ -143,6 +309,27 @@
 
 <span class="o">==============================================================</span> <span class="mi">1</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.09</span><span class="n">s</span> <span class="o">==============================================================</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>pytestコマンドのオプションは様々な物があります。 例えば <cite>-rA</cite> は すべてのテスト結果のショートサマリーが見れます。テスト結果とテストの失敗やエラー情報がテストごとに1～2行で表されます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span> \<span class="n">step</span>\<span class="n">pytest</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">pytest</span> <span class="o">-</span><span class="n">ra</span>
+
+<span class="c1"># テスト結果を割愛して最後のショートサマリの箇所を引用</span>
+
+<span class="o">=================================================================</span> <span class="n">short</span> <span class="n">test</span> <span class="n">summary</span> <span class="n">info</span> <span class="o">==================================================================</span>
+<span class="n">PASSED</span> <span class="n">test_fixture_load_json</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_check_val1</span>
+<span class="n">PASSED</span> <span class="n">test_fixture_load_json</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_check_val2</span>
+<span class="n">PASSED</span> <span class="n">test_hello_pytest_3</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_pytest</span>
+<span class="n">PASSED</span> <span class="n">test_monkeypatch_function</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_getssh</span>
+<span class="n">PASSED</span> <span class="n">test_parametrize</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_eval</span><span class="p">[</span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">PASSED</span> <span class="n">test_parametrize</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_eval</span><span class="p">[</span><span class="mi">2</span><span class="o">+</span><span class="mi">4</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">FAILED</span> <span class="n">test_hello_pytest_1</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_pytest</span> <span class="o">-</span> <span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="n">FAILED</span> <span class="n">test_hello_pytest_2</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_pytest</span> <span class="o">-</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
+<span class="n">FAILED</span> <span class="n">test_parametrize</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_eval</span><span class="p">[</span><span class="mi">6</span><span class="o">*</span><span class="mi">9</span><span class="o">-</span><span class="mi">42</span><span class="p">]</span> <span class="o">-</span> <span class="ne">AssertionError</span><span class="p">:</span> <span class="k">assert</span> <span class="mi">54</span> <span class="o">==</span> <span class="mi">42</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://docs.pytest.org/en/stable/usage.html#detailed-summary-report">Usage and Invocations — pytest documentation</a></p>
 </div>
 </div>
 </div>
@@ -236,15 +423,45 @@
 </div>
 </div>
 </div>
+<div class="section" id="id5">
+<h2>pytestコマンドは自動的にテストファイルを探す<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>またpytestは自動的にテストとして実行可能なファイルを探します。プロジェクトのディレクトリ上でpytestコマンドを実行させるだけで簡単にテストの実行が出来ます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">./tutorial_docs/step/pytest-1</span></code> というディレクトリに上記までに扱ったテストファイルがありますが、ここではディレクトリにカレントディレクトリを移動させてpytestの実行をしてみましょう。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Windows 10の場合
+(.venv) tutorial_docs&gt; cd .\tutorial_docs\step\pytest-1
+(.venv) pytest-1&gt; pytest
+
+# macOSの場合
+(.venv) tutorial_docs$ cd ./tutorial_docs/step/pytest-1
+(.venv) pytest-1$ pytest
+</pre></div>
+</div>
+<p>上記までの説明で利用したテストファイルが実行されます。成功、失敗するテストがいくつかあるか確認してみましょう。</p>
+<p>確認が終わったら、 cdコマンドでtutorial_docsディレクトリまで移動してください。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Windows 10の場合
+(.venv) pytest-1&gt; cd ..\..\..\
+(.venv) tutorial_docs&gt;
+
+# macOSの場合
+(.venv) pytest-1$ cd ../../../
+(.venv) tutorial_docs$
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>休憩3🧘‍♂️<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>pytestの基本的なコーディングと、便利な機能を紹介しました。情報量も多かったと思うので、このあたりで休憩しましょう。</p>
+<p>おやつも良いのですが、一日中座りっぱなしも体に良くないです。立ち上がって背伸びをするなどストレッチをしましょう！🧘‍♂️</p>
+</div>
 <div class="section" id="slackbot">
 <h2>SlackBotのテストケースを書いてみよう<a class="headerlink" href="#slackbot" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>チュートリアルで作成しているSlackbotのテストを書いてみましょう。</p>
 <p>SlackbotはSlackワークスペースとの連携が必要になりますが、このテストはそういった外部サービスとの連携テストを想定していません。botとして返答する情報が正しいかの単体テストを作成します。</p>
-<div class="section" id="id5">
-<h3>下準備<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id7">
+<h3>下準備<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pt_slackbot</span></code> ディレクトリ内に <code class="docutils literal notranslate"><span class="pre">tests</span></code> ディレクトリを作成します(作成はVS Codeやターミナル経由でも良いです）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tests</span></code> ディレクトリに <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>　ファイルを作成します</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tests</span></code> ディレクトリに <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>　ファイルを作成します。これによりpytestはtestsディレクトリをテストが入っているディレクトリとして認識します</p></li>
 </ul>
 </div>
 <div class="section" id="bot">
@@ -258,84 +475,68 @@
 <p><a class="reference external" href="https://github.com/py-suruga/pycon-jp-2020-tutorial/tree/master/tutorial_docs/step/pytest-2">pycon-jp-2020-tutorial/tutorial_docs/step/pytest-2</a></p>
 </div>
 </div>
+<div class="section" id="id8">
+<h2>休憩4🍪☕<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>pytestを使ってbotのテストケースを作成しました。テストを作成することで作成や変更したコードに対しての信頼性を持たせることが出来ます。次は、Sphinxを使いドキュメントを作成します。</p>
+<p>この辺で休憩です。そろそろコーヒーかお茶が飲みたい頃ですね。用意しておきましょう☕</p>
+<img alt="_images/oyatu-2.jpg" src="_images/oyatu-2.jpg" />
+</div>
 </div>
 
 
+           </div>
+           
           </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント</a></h1>
-
-
-
-
-
-
-
-
-<h3>ナビゲーション</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="prepare.html">チュートリアル開始前の準備</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vscode.html">VS CodeとLive Shareの設定</a></li>
-<li class="toctree-l1"><a class="reference internal" href="slackbot.html">Slackbotの作成</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">pytestでテストケースを導入する</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">pytestコマンドの使い方</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">pytestの機能</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#slackbot">SlackBotのテストケースを書いてみよう</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="sphinx.html">Sphinxでドキュメントを書こう</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="slackbot.html" title="前の章へ">Slackbotの作成</a></li>
-      <li>Next: <a href="sphinx.html" title="次の章へ">Sphinxでドキュメントを書こう</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">クイック検索</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="検索" />
-    </form>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sphinx.html" class="btn btn-neutral float-right" title="Sphinxでドキュメントを書こう" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="slackbot.html" class="btn btn-neutral float-left" title="Slackbotの作成" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+  
 
+  <hr/>
 
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 著作権 2020, Py-Suruga, Unagi-py, Hiroshi sano
 
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-
-
-
+</footer>
 
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2020, Py-Suruga, Unagi-py, Hiroshi sano.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/pytest.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
     
-  </body>
+   
+
+</body>
 </html>

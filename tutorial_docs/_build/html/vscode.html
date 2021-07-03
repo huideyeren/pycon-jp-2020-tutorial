@@ -1,38 +1,173 @@
 
-<!DOCTYPE html>
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VS CodeとLive Shareの設定 &#8212; PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント 2020.07.24 ドキュメント</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/translations.js"></script>
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>VS CodeとLive Shareの設定 &mdash; PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント 2020.07.24 ドキュメント</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
     <link rel="next" title="Slackbotの作成" href="slackbot.html" />
-    <link rel="prev" title="チュートリアル開始前の準備" href="prepare.html" />
+    <link rel="prev" title="チュートリアル開始前の準備" href="prepare.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
           
 
-          <div class="body" role="main">
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="prepare.html">チュートリアル開始前の準備</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">VS CodeとLive Shareの設定</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vs-code">VS Codeの設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">利用する拡張機能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">ワークスペースの設定</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">リンターとフォーマッター</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#live-share">Live Shareによるチュートリアルサポート</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#liveshare">LiveShare拡張のインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">コラボレーションセッションの作成</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">チュートリアル当日の流れ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slackbot.html">Slackbotの作成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pytest.html">pytestでテストケースを導入する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx.html">Sphinxでドキュメントを書こう</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>VS CodeとLive Shareの設定</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/vscode.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="vs-codelive-share">
 <h1>VS CodeとLive Shareの設定<a class="headerlink" href="#vs-codelive-share" title="このヘッドラインへのパーマリンク">¶</a></h1>
@@ -48,6 +183,24 @@
 <li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python - Visual Studio Marketplace</a></p></li>
 <li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext">reStructuredText - Visual Studio Marketplace</a></p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>Python拡張機能をインストールすると、Python実行環境（インタプリタ）が促される場合があります。</p>
+<p><span class="xref std std-doc">prepare.rst</span> でPyhtonの仮想環境をインストールされていると自動的に仮想環境が設定されます。</p>
+<p>もし設定されない場合は、次の「ワークスペースの設定」で <code class="docutils literal notranslate"><span class="pre">.vscode/settings.json</span></code> に以下を設定します。今回は相対パスの例ですが、自動的に設定された場合は絶対パスで設定されることがあります。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// Windows 10の場合
+{
+  &quot;python.pythonPath&quot;: &quot;.venv\\Scripts\\python.exe&quot;
+}
+
+// macOSの場合
+
+{
+  &quot;python.pythonPath&quot;: &quot;.venv/bin/python&quot;
+}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="id2">
 <h2>ワークスペースの設定<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -57,20 +210,39 @@
 <li><p><a class="reference external" href="https://code.visualstudio.com/docs/getstarted/settings">Visual Studio Code User and Workspace Settings</a></p></li>
 </ul>
 <p>Python拡張機能で利用できる設定を追加します。リンターやフォーマッターの有効化をしています。<code class="docutils literal notranslate"><span class="pre">.vscode/settings.json</span></code> に以下の設定を追加します。</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;python.formatting.provider&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;editor.formatOnSave&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&quot;python.linting.pylintEnabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nt">&quot;python.linting.flake8Enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&quot;python.linting.enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-<span class="p">}</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+  // この部分にpython.pythonPath があります。
+  &quot;python.formatting.provider&quot;: &quot;black&quot;,
+  &quot;editor.formatOnSave&quot;: true,
+  &quot;python.linting.pylintEnabled&quot;: false,
+  &quot;python.linting.flake8Enabled&quot;: true,
+  &quot;python.linting.enabled&quot;: true,
+}
 </pre></div>
 </div>
-<p>この設定は、いくつかのPythonパッケージの依存があります。これらはpip経由でインストール可能で、 <a class="reference internal" href="slackbot.html"><span class="doc">Slackbotの作成</span></a>  の「ローカル開発環境の用意」の仮想環境作成時にインストールしています。</p>
+<p>この設定は、いくつかのPythonパッケージの依存があります。これらはpip経由でインストール可能で、 <a class="reference internal" href="prepare.html"><span class="doc">チュートリアル開始前の準備</span></a> -「ローカル開発環境の用意」の仮想環境作成時にインストールしています。ここではflake8とblackというツールを利用しています。</p>
+<div class="section" id="id3">
+<h3>リンターとフォーマッター<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>PythonではPEP8と呼ばれるコーディング規約があります。PEP8に準拠することで、複数人で書かれたPythonのソースコードスタイルを統一して、可読性を上げたり、修正や機能追加をしやすくすることが出来ます。</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/psf/black">psf/black: The uncompromising Python code formatter</a></p></li>
+<li><p><a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP 8 -- Style Guide for Python Code | Python.org</a></p></li>
+<li><p><a class="reference external" href="https://pep8-ja.readthedocs.io/ja/latest/">はじめに — pep8-ja 1.0 ドキュメント</a></p></li>
+</ul>
+<p>ですが、人がPEP8を覚えたり確認する作業は大変なことです。そのため、コーディング規約を自動的にチェックしたり、修正するツールがあります。</p>
+<p>自動的にチェックするツールをリンター（Linter）と呼びます。静的解析手法とも呼びます。リンターはソースコードをインタプリタやコンパイラなどの実行環境ではなく、コードの内容を元にエラーやコーディング規約と違いがないかを調べて指摘をするツールです。</p>
+<p>flake8はPEP8のチェック、コードのエラーを警告、プログラムの複雑性のチェック という機能があるツール三種類をひとまとめで利用できるラッパーになります。</p>
+<ul class="simple">
 <li><p><a class="reference external" href="https://gitlab.com/pycqa/flake8">PyCQA / flake8 · GitLab</a></p></li>
 </ul>
+<p>フォーマッター（Formatter）は、ソースコードのスタイルを自動的にコーディング規約に修正するツールです。</p>
+<p>PEP8を人が事細かに守るのは難しいものです。人それぞれでソースコードの書き方の違いもあります。それらを決めたスタイルを元に自動的に修正することで、ソースコードの可読性を維持できます。</p>
+<p>blackはPEP8のフォーマッターですが、PEP8では言及されていない表現についてもBlack code styleを元にソースコードの整形を行います（つまりblackも一つのコードスタイルです）</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/psf/black">psf/black: The uncompromising Python code formatter</a></p></li>
+<li><p>blackのコードスタイルについては公式に記載されています: <a class="reference external" href="https://github.com/psf/black/blob/master/docs/the_black_code_style.md">black/the_black_code_style.md at master · psf/black</a></p></li>
+<li><p><a class="reference external" href="https://www.slideshare.net/aodag/python-172432039">Pythonでの開発を効率的に進めるためのツール設定</a></p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="live-share">
 <h2>Live Shareによるチュートリアルサポート<a class="headerlink" href="#live-share" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -84,8 +256,8 @@
 <p>ストアからインストールします。</p>
 <p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare">Live Share - Visual Studio Marketplace</a></p>
 </div>
-<div class="section" id="id3">
-<h3>コラボレーションセッションの作成<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id4">
+<h3>コラボレーションセッションの作成<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>各参加者皆さんのVS Codeで、Live Shareのコラボレーションセッションに講師とTAは参加する必要があります。その時に必要な招待URLを作成していただく必要があります。</p>
 <p>Live Share拡張をインストールすると、自動的にWelcomeタブが表示されますが閉じてもらって構いません</p>
 <p>VS Codeウィンドウの下部にあるLive Shareマークをクリックして、GitHubアカウントでログインします。</p>
@@ -98,90 +270,66 @@
 <img alt="_images/vscode_4.png" src="_images/vscode_4.png" />
 </div>
 </div>
-<div class="section" id="id4">
-<h2>チュートリアル当日の流れ<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>当日は 8/30 9:30 から環境構築の相談時間を設けます。その時に「セッションの作成」の作業をしてもらい、コラボレーションの招待リンクを伝えてください。</p>
+<div class="section" id="id5">
+<h2>チュートリアル当日の流れ<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>当日は 8/30 9:30 から環境構築の相談時間を設けます。その時に「コラボレーションセッションの作成」の作業をしてもらい、コラボレーションの招待リンクを伝えてください。</p>
 </div>
 </div>
 
 
+           </div>
+           
           </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント</a></h1>
-
-
-
-
-
-
-
-
-<h3>ナビゲーション</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="prepare.html">チュートリアル開始前の準備</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">VS CodeとLive Shareの設定</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#vs-code">VS Codeの設定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">利用する拡張機能</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">ワークスペースの設定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#live-share">Live Shareによるチュートリアルサポート</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">チュートリアル当日の流れ</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="slackbot.html">Slackbotの作成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pytest.html">pytestでテストケースを導入する</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sphinx.html">Sphinxでドキュメントを書こう</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="prepare.html" title="前の章へ">チュートリアル開始前の準備</a></li>
-      <li>Next: <a href="slackbot.html" title="次の章へ">Slackbotの作成</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">クイック検索</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="検索" />
-    </form>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="slackbot.html" class="btn btn-neutral float-right" title="Slackbotの作成" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="prepare.html" class="btn btn-neutral float-left" title="チュートリアル開始前の準備" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+  
 
+  <hr/>
 
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 著作権 2020, Py-Suruga, Unagi-py, Hiroshi sano
 
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-
-
-
+</footer>
 
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2020, Py-Suruga, Unagi-py, Hiroshi sano.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/vscode.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
     
-  </body>
+   
+
+</body>
 </html>

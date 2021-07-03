@@ -1,37 +1,187 @@
 
-<!DOCTYPE html>
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sphinxでドキュメントを書こう &#8212; PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント 2020.07.24 ドキュメント</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/translations.js"></script>
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sphinxでドキュメントを書こう &mdash; PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント 2020.07.24 ドキュメント</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
-    <link rel="prev" title="pytestでテストケースを導入する" href="pytest.html" />
+    <link rel="prev" title="pytestでテストケースを導入する" href="pytest.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
           
 
-          <div class="body" role="main">
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="prepare.html">チュートリアル開始前の準備</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode.html">VS CodeとLive Shareの設定</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slackbot.html">Slackbotの作成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pytest.html">pytestでテストケースを導入する</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sphinxでドキュメントを書こう</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Sphinxの始め方</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slackbot">Slackbotのドキュメントを書こう</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Sphinxはじめの一歩</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">見出し</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">リンク</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">リスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">画像</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">コードブロック</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">ドキュメントの生成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#toctree">toctreeディレクティブ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Slackbotの説明文を書いてみよう</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">休憩5🍪☕</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#autodocapi">autodoc拡張機能を使ったAPIリファレンス作成</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docstirng">docstirngを書こう</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docstring">docstringのスタイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">docstringと型アノテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#botdocstring">botの関数にdocstringを用意する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Sphinxの設定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#autodoc-sphinx-apidoc">autodoc拡張で半自動的にリファレンスを作成する: sphinx-apidocコマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api">APIリファレンス入のドキュメントを生成する</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">テーマを変更しよう</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Sphinxでドキュメントを書こう</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sphinx.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="sphinx">
 <h1>Sphinxでドキュメントを書こう<a class="headerlink" href="#sphinx" title="このヘッドラインへのパーマリンク">¶</a></h1>
@@ -47,11 +197,22 @@
 <div class="section" id="id1">
 <h2>Sphinxの始め方<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Sphinxもローカル開発環境を作成した段階でインストールされています。もし <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> というコマンドが見つからない場合はpipコマンドでインストールします。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">Sphinx</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">Sphinx</span>
 </pre></div>
 </div>
 <p>Sphinxはドキュメントを作成するひな形の環境を用意する <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> コマンドがあります。こちらを利用してひな形を作りましょう</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(pycon-jp-2020-tutorial) PS C:\Users\hiroshi\Documents\pycon-jp-2020-tutorial\pt_slackbot&gt; sphinx-quickstart.exe .\docs\
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Windows10の例
+
+(.venv) pycon-jp-2020-tutorial&gt; cd pt_slackbot
+\pt_slackbot&gt; sphinx-quickstart.exe .\docs\
+
+# macOSの例
+
+(.venv) pycon-jp-2020-tutorial$ cd pt_slackbot
+pt_slackbot&gt; sphinx-quickstart ./docs/
+
+# 以下Windowsの実行例
+
 Welcome to the Sphinx 3.1.2 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
@@ -67,7 +228,7 @@ Either, you use a directory &quot;_build&quot; within the root path, or you sepa
 The project name will occur in several places in the built documentation.
 &gt; Project name: pt_slackbot ドキュメント
 &gt; Author name(s): Hiroshi Sano
-&gt; Project release []: 2020.07.24
+&gt; Project release []: 2020.08.30
 
 If the documents are to be written in a language other than English,
 you can select a language here by its language code. Sphinx will then
@@ -91,7 +252,7 @@ where &quot;builder&quot; is one of the supported builders, e.g. html, latex or 
 </pre></div>
 </div>
 <p>今回のSlackbotのドキュメントは以下のような構造で作成します。チュートリアルで利用するディレクトリやファイルに付いて解説します。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>./pt_slackbot/docs
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.\pt_slackbot\docs
 ├── Makefile # sphinxのドキュメント生成をmakeコマンドで行うときのmakefile
 ├── make.bat # makefileのWindowsバージョン
 ├── _build # ビルドされた結果が入るディレクトリ
@@ -103,8 +264,8 @@ where &quot;builder&quot; is one of the supported builders, e.g. html, latex or 
 <div class="section" id="slackbot">
 <h2>Slackbotのドキュメントを書こう<a class="headerlink" href="#slackbot" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>それでは、Slackbotのドキュメントを書きましょう。あらかじめ用意してあるファイルをコピーして説明文を載せていきましょう。</p>
-<p>Sphinxではドキュメントの作成に、RestructuredTextというプレーンテキスト形式の軽量マークアップ言語を利用します。短縮名として「reST」とも言われます。</p>
-<p>RestructuredTextには、記法やディレクティブという概念があります。記法は見出しやリストやURLリンクなどの文章の装飾や意味合いの定義を付け加えます。ディレクティブも文章の意味合いを定義するものに使いますが、文章を書く上で便利な機能を提供しています。</p>
+<p>Sphinxではドキュメントの作成に、reStructuredTextというプレーンテキスト形式の軽量マークアップ言語を利用します。短縮名として「reST」とも言われます。</p>
+<p>reStructuredTextには、記法やディレクティブという概念があります。記法は見出しやリストやURLリンクなどの文章の装飾や意味合いの定義を付け加えます。ディレクティブも文章の意味合いを定義するものに使いますが、文章を書く上で便利な機能を提供しています。</p>
 <p>Sphinxは標準でも多数の記法、ディレクティブに対応しています。またサードパーティが提供する拡張機能も利用できます。</p>
 <div class="section" id="id2">
 <h3>Sphinxはじめの一歩<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -117,6 +278,11 @@ where &quot;builder&quot; is one of the supported builders, e.g. html, latex or 
 見出し2
 ----------
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>見出し（セクション）を定義するときのライン（アンダーライン）は &quot;<code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">-</span> <span class="pre">`</span> <span class="pre">:</span> <span class="pre">'</span> <span class="pre">&quot;</span> <span class="pre">~</span> <span class="pre">^</span> <span class="pre">_</span> <span class="pre">*</span> <span class="pre">+</span> <span class="pre">#</span> <span class="pre">&lt;</span> <span class="pre">&gt;</span></code>&quot; が利用できます。見出しのレベルはアンダーライン記号の出現順で記号自体にレベルの概念はありませんが、Pythonドキュメントの慣例があります。詳しくはsphinxのドキュメントにて</p>
+<p>ref: <a class="reference external" href="https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html#sections">reStructuredText入門 — Sphinx 4.0.0+/5ade6b721 ドキュメント</a></p>
 </div>
 </div>
 <div class="section" id="id4">
@@ -150,17 +316,26 @@ where &quot;builder&quot; is one of the supported builders, e.g. html, latex or 
 <div class="section" id="id8">
 <h3>ドキュメントの生成<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ドキュメントをhtmlで生成する場合は <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> コマンドが生成したmakeファイルを使うと簡単に生成できます。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#win10ならmake.bat</span>
-<span class="o">&gt;</span> <span class="n">make</span><span class="o">.</span><span class="n">bat</span> <span class="n">html</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Windows 10ならmake.bat
+(.venv) pt_slackbot&gt; cd docs
+(.venv) docs&gt; .\make.bat html
 
-<span class="c1">#macOSならmakefileがそのまま扱えます</span>
-<span class="o">&gt;</span> <span class="n">make</span> <span class="n">html</span>
+# macOSならmakefileがそのまま扱えます
+(.venv)pt_slackbot$ cd docs
+(.venv)docs$ make html
 </pre></div>
 </div>
-<p>生成されたhtmlはPythonの簡易httpサーバーを利用してブラウザで確認できます。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ポート指定することでhttpサーバーのポートを変更できます。今回は8080版を利用しています。</span>
-<span class="o">&gt;</span> <span class="n">cd</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>
-<span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span> <span class="mi">8080</span>
+<p>生成されたhtmlはPythonの簡易httpサーバーを利用してブラウザで確認できます。別のターミナルを開いて実行してください。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 別のターミナルを開いて実行してください。VS Codeなら「ターミナルの分割」機能が便利です。
+# ポート指定することでhttpサーバーのポートを変更できます。今回は8080版を利用しています。
+
+# Windows 10
+(.venv) pt_slackbot&gt; cd _build\html
+(.venv) html&gt; python -m http.server 8080
+
+# macOS
+(.venv) pt_slackbot$ cd _build/html
+(.venv) html&amp; python -m http.server 8080
 </pre></div>
 </div>
 <img alt="_images/sphinx_1.png" src="_images/sphinx_1.png" />
@@ -193,6 +368,12 @@ where &quot;builder&quot; is one of the supported builders, e.g. html, latex or 
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="id10">
+<h2>休憩5🍪☕<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以上まで、sphinxの環境用意とreStructuredTextの簡単な記法を扱いました。その他にも様々な機能が備わっているので、公式ドキュメントをぜひのぞいてみましょう。</p>
+<p>...といっていると頭を使いすぎてしまうと思うので、ここで休憩にします。おやつとコーヒーでリフレッシュしましょう。</p>
+<img alt="_images/oyatu-3.jpg" src="_images/oyatu-3.jpg" />
 </div>
 <div class="section" id="autodocapi">
 <h2>autodoc拡張機能を使ったAPIリファレンス作成<a class="headerlink" href="#autodocapi" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -278,8 +459,8 @@ where &quot;builder&quot; is one of the supported builders, e.g. html, latex or 
 </div>
 </div>
 </div>
-<div class="section" id="id10">
-<h3>docstringと型アノテーション<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id11">
+<h3>docstringと型アノテーション<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>docstringは、もともと関数/メソッドの引数（Args）の説明や戻り値（Returns）等に型の種類を宣言できます。この型宣言自体はPython側に直接影響は有りません（Pythonは動的型定義の言語です）。</p>
 <p>しかし予め定義することでPythonに対応したIDEや型チェッカー( <a class="reference external" href="https://mypy.readthedocs.io/en/stable/index.html">Mypy</a> 等）を使うことで入力補完機能やチェッカーによる警告機能を使うことができます。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Googleスタイルです</span>
@@ -359,8 +540,8 @@ where &quot;builder&quot; is one of the supported builders, e.g. html, latex or 
 </ul>
 </div>
 </div>
-<div class="section" id="id12">
-<h3>Sphinxの設定<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id13">
+<h3>Sphinxの設定<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>autodoc拡張機能はSphinxの設定で有効にする必要があります。Sphinxの設定は <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> コマンドで作成したひな形にあるconf.pyを変更します。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Path setup --------------------------------------------------------------</span>
 
@@ -403,7 +584,15 @@ where &quot;builder&quot; is one of the supported builders, e.g. html, latex or 
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># /testsディレクトリは除外する指定をしています。
 # sphinx-apidoc -f（上書き） -o（出力先ディレクトリの指定） [出力先ディレクトリのパス] [autodocで生成したいPythonモジュールのパス] [除外するパス]
 
-pt_slackbot&gt; sphinx-apidoc.exe -f -o ./docs ./ /tests
+# 現在位置が、pt_slackbot\docs のはずなので、pt_slackbotのディレクトリに戻ります
+
+# Windows 10の場合
+(.venv)docs&gt; cd ..\
+(.venv)pt_slackbot&gt; sphinx-apidoc.exe -f -o .\docs .\ .\tests
+
+# macOSの場合
+(.venv)docs&amp; cd ../
+(.venv)pt_slackbot&amp; sphinx-apidoc -f -o ./docs ./ ./tests
 
 # 以下に生成の結果が表示される
 </pre></div>
@@ -430,8 +619,8 @@ pt_slackbot&gt; sphinx-apidoc.exe -f -o ./docs ./ /tests
 <p>toctreeディレクティブに <code class="docutils literal notranslate"><span class="pre">modules</span></code> を追加した結果、モジュールの一覧の目次が作成されています。</p>
 </div>
 </div>
-<div class="section" id="id13">
-<h2>テーマを変更しよう<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id14">
+<h2>テーマを変更しよう<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>最後に見栄えを自由に変更できるテーマについて説明します。</p>
 <p>Sphinxは公式同梱のテーマ以外にも、サードパーティのテーマも充実しています。</p>
 <p>今回はドキュメントホスティングサービスとして有名な、Read The Docsが提供しているSphinxテーマである <code class="docutils literal notranslate"><span class="pre">sphinx-rtd-theme</span></code> を適用してみましょう。</p>
@@ -444,81 +633,57 @@ pt_slackbot&gt; sphinx-apidoc.exe -f -o ./docs ./ /tests
 </div>
 
 
+           </div>
+           
           </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">PyCon JP 2020 チュートリアル Slack Bot編 ドキュメント</a></h1>
-
-
-
-
-
-
-
-
-<h3>ナビゲーション</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="prepare.html">チュートリアル開始前の準備</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vscode.html">VS CodeとLive Shareの設定</a></li>
-<li class="toctree-l1"><a class="reference internal" href="slackbot.html">Slackbotの作成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pytest.html">pytestでテストケースを導入する</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Sphinxでドキュメントを書こう</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Sphinxの始め方</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#slackbot">Slackbotのドキュメントを書こう</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#autodocapi">autodoc拡張機能を使ったAPIリファレンス作成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id13">テーマを変更しよう</a></li>
-</ul>
-</li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="pytest.html" title="前の章へ">pytestでテストケースを導入する</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">クイック検索</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="検索" />
-    </form>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="pytest.html" class="btn btn-neutral float-left" title="pytestでテストケースを導入する" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+  
 
+  <hr/>
 
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 著作権 2020, Py-Suruga, Unagi-py, Hiroshi sano
 
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-
-
-
+</footer>
 
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2020, Py-Suruga, Unagi-py, Hiroshi sano.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/sphinx.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
     
-  </body>
+   
+
+</body>
 </html>

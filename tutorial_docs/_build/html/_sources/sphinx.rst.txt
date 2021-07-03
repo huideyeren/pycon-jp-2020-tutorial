@@ -22,13 +22,24 @@ Sphinxもローカル開発環境を作成した段階でインストールさ�
 
 ::
 
-    pip install -U Sphinx
+    (.venv)> pip install -U Sphinx
 
 Sphinxはドキュメントを作成するひな形の環境を用意する ``sphinx-quickstart`` コマンドがあります。こちらを利用してひな形を作りましょう
 
 .. code-block:: none
 
-    (pycon-jp-2020-tutorial) PS C:\Users\hiroshi\Documents\pycon-jp-2020-tutorial\pt_slackbot> sphinx-quickstart.exe .\docs\
+    # Windows10の例
+
+    (.venv) pycon-jp-2020-tutorial> cd pt_slackbot
+    \pt_slackbot> sphinx-quickstart.exe .\docs\
+
+    # macOSの例
+
+    (.venv) pycon-jp-2020-tutorial$ cd pt_slackbot
+    pt_slackbot> sphinx-quickstart ./docs/
+
+    # 以下Windowsの実行例
+
     Welcome to the Sphinx 3.1.2 quickstart utility.
 
     Please enter values for the following settings (just press Enter to
@@ -44,7 +55,7 @@ Sphinxはドキュメントを作成するひな形の環境を用意する ``sp
     The project name will occur in several places in the built documentation.
     > Project name: pt_slackbot ドキュメント
     > Author name(s): Hiroshi Sano
-    > Project release []: 2020.07.24
+    > Project release []: 2020.08.30
 
     If the documents are to be written in a language other than English,
     you can select a language here by its language code. Sphinx will then
@@ -70,7 +81,7 @@ Sphinxはドキュメントを作成するひな形の環境を用意する ``sp
 
 ::
 
-    ./pt_slackbot/docs
+    .\pt_slackbot\docs
     ├── Makefile # sphinxのドキュメント生成をmakeコマンドで行うときのmakefile
     ├── make.bat # makefileのWindowsバージョン
     ├── _build # ビルドされた結果が入るディレクトリ
@@ -83,9 +94,9 @@ Slackbotのドキュメントを書こう
 
 それでは、Slackbotのドキュメントを書きましょう。あらかじめ用意してあるファイルをコピーして説明文を載せていきましょう。
 
-Sphinxではドキュメントの作成に、RestructuredTextというプレーンテキスト形式の軽量マークアップ言語を利用します。短縮名として「reST」とも言われます。
+Sphinxではドキュメントの作成に、reStructuredTextというプレーンテキスト形式の軽量マークアップ言語を利用します。短縮名として「reST」とも言われます。
 
-RestructuredTextには、記法やディレクティブという概念があります。記法は見出しやリストやURLリンクなどの文章の装飾や意味合いの定義を付け加えます。ディレクティブも文章の意味合いを定義するものに使いますが、文章を書く上で便利な機能を提供しています。
+reStructuredTextには、記法やディレクティブという概念があります。記法は見出しやリストやURLリンクなどの文章の装飾や意味合いの定義を付け加えます。ディレクティブも文章の意味合いを定義するものに使いますが、文章を書く上で便利な機能を提供しています。
 
 Sphinxは標準でも多数の記法、ディレクティブに対応しています。またサードパーティが提供する拡張機能も利用できます。
 
@@ -104,6 +115,11 @@ Sphinxはじめの一歩
 
     見出し2
     ----------
+
+.. note::
+    見出し（セクション）を定義するときのライン（アンダーライン）は "``= - ` : ' " ~ ^ _ * + # < >``" が利用できます。見出しのレベルはアンダーライン記号の出現順で記号自体にレベルの概念はありませんが、Pythonドキュメントの慣例があります。詳しくはsphinxのドキュメントにて
+
+    ref: `reStructuredText入門 — Sphinx 4.0.0+/5ade6b721 ドキュメント <https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html#sections>`_
 
 リンク
 ~~~~~~~~~~
@@ -146,19 +162,29 @@ Sphinxはじめの一歩
 
 ::
 
-    #win10ならmake.bat
-    > make.bat html
+    # Windows 10ならmake.bat
+    (.venv) pt_slackbot> cd docs
+    (.venv) docs> .\make.bat html
 
-    #macOSならmakefileがそのまま扱えます
-    > make html
+    # macOSならmakefileがそのまま扱えます
+    (.venv)pt_slackbot$ cd docs
+    (.venv)docs$ make html
 
-生成されたhtmlはPythonの簡易httpサーバーを利用してブラウザで確認できます。
+生成されたhtmlはPythonの簡易httpサーバーを利用してブラウザで確認できます。別のターミナルを開いて実行してください。
 
 ::
 
+    # 別のターミナルを開いて実行してください。VS Codeなら「ターミナルの分割」機能が便利です。
     # ポート指定することでhttpサーバーのポートを変更できます。今回は8080版を利用しています。
-    > cd _build/html
-    > python -m http.server 8080
+
+    # Windows 10
+    (.venv) pt_slackbot> cd _build\html
+    (.venv) html> python -m http.server 8080
+
+    # macOS
+    (.venv) pt_slackbot$ cd _build/html
+    (.venv) html& python -m http.server 8080
+
 
 .. image:: ./doc-img/sphinx_1.png
 
@@ -201,6 +227,16 @@ Slackbotの説明文を書いてみよう
         :caption: Contents:
 
         slackbot_usage # .rst の拡張子はつけない
+
+
+休憩5🍪☕
+===============
+
+以上まで、sphinxの環境用意とreStructuredTextの簡単な記法を扱いました。その他にも様々な機能が備わっているので、公式ドキュメントをぜひのぞいてみましょう。
+
+...といっていると頭を使いすぎてしまうと思うので、ここで休憩にします。おやつとコーヒーでリフレッシュしましょう。
+
+.. image:: ./doc-img/oyatu-3.jpg
 
 autodoc拡張機能を使ったAPIリファレンス作成
 ==============================================================================================
@@ -281,11 +317,11 @@ Googleスタイルはシンプルな表現であるため、docstringを最初�
         # 以降処理が続く..
 
 
-.. note:: 
+.. note::
     Numpyスタイルの紹介もします。Numpyスタイルは縦に長くなりますが、テキストのみでも読みやすいのが特徴です。
 
     `NumPyスタイルPython Docstringsの例 — Sphinx 1.6.7 ドキュメント <https://www.sphinx-doc.org/ja/1.6/ext/example_numpy.html#example-numpy>`_
-    
+
     .. code-block:: python
 
         def search_online_event(ym):
@@ -294,7 +330,7 @@ Googleスタイルはシンプルな表現であるため、docstringを最初�
             ----------
             ym : str
                 connpassのAPIに渡す ymパラメータ。 yyyymm の6文字で年月を表す
-            
+
             Returns
             -------
             str
@@ -324,7 +360,7 @@ docstringは、もともと関数/メソッドの引数（Args）の説明や戻
         request_connpass_apiで受け取ったレスポンスを元にbotに渡す文字列を生成します
         """
         # 以降処理が続く..
-        
+
 Python3から型アノテーションという、定義時に型を明言する機能が追加されました。Python3.0から関数の引数や戻り値に対してのアノテーションが扱えます。
 
 `PEP 3107 -- Function Annotations | Python.org <https://www.python.org/dev/peps/pep-3107/>`_
@@ -352,7 +388,7 @@ Sphinxの現行バージョンとautodoc拡張は型アノテーションを使�
     docstringに型宣言もありバージョン
 
     .. code-block:: python
-    
+
         def search_online_event(ym):
             """
             :param ym: connpassのAPIに渡す ymパラメータ。 yyyymm の6文字で年月を表す
@@ -363,7 +399,7 @@ Sphinxの現行バージョンとautodoc拡張は型アノテーションを使�
             request_connpass_apiで受け取ったレスポンスを元にbotに渡す文字列を生成します
             """
             # 以降処理が続く..
-            
+
     型アノテーションバージョン
 
     .. code-block:: python
@@ -376,16 +412,6 @@ Sphinxの現行バージョンとautodoc拡張は型アノテーションを使�
             request_connpass_apiで受け取ったレスポンスを元にbotに渡す文字列を生成します
             """
             # 以降処理が続く..
-
-
-.. .. note:: このチュートリアルではVS Code+Python拡張を利用しているため、型宣言を行うと補完されやすくなります。
-
-..     .. vs code の補完のリンク
-
-..     また、mypyなどの型チェッカーの扱いはしませんが、大型なプロジェクトで作業を行う際にCIにチェッカー機能を設定すると、不明瞭なデータ型の扱いを防ぐ事もできます。
-
-..     `Using mypy with an existing codebase — Mypy 0.782 documentation <https://mypy.readthedocs.io/en/stable/existing_code.html#continuous-integration>`_
-
 
 botの関数にdocstringを用意する
 ---------------------------------------------------
@@ -460,7 +486,15 @@ docstringの用意と設定を変更したので、autodoc拡張を使ってリ�
     # /testsディレクトリは除外する指定をしています。
     # sphinx-apidoc -f（上書き） -o（出力先ディレクトリの指定） [出力先ディレクトリのパス] [autodocで生成したいPythonモジュールのパス] [除外するパス]
 
-    pt_slackbot> sphinx-apidoc.exe -f -o ./docs ./ /tests
+    # 現在位置が、pt_slackbot\docs のはずなので、pt_slackbotのディレクトリに戻ります
+
+    # Windows 10の場合
+    (.venv)docs> cd ..\
+    (.venv)pt_slackbot> sphinx-apidoc.exe -f -o .\docs .\ .\tests
+
+    # macOSの場合
+    (.venv)docs& cd ../
+    (.venv)pt_slackbot& sphinx-apidoc -f -o ./docs ./ ./tests
 
     # 以下に生成の結果が表示される
 
